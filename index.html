@@ -1,0 +1,424 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RuleGuard Atelier — API Testing Studio</title>
+<link rel="stylesheet" href="style.css">
+<script src="script.js" defer></script>
+</head>
+<body>
+<div class="app">
+
+<aside class="sidebar">
+  <div class="brand">
+    <div class="brand-symbol">✳</div>
+    <div>
+      <b>ruleguard<span>atelier</span></b>
+      <small>API INTELLIGENCE STUDIO</small>
+    </div>
+  </div>
+
+  <div class="eyebrow side-title">YOUR WORKSPACE</div>
+
+  <nav id="nav">
+    <button class="nav active" data-page="overview">
+      ◫ <span>Overview</span>
+    </button>
+    <button class="nav" data-page="studio">
+      ⌘ <span>Test Studio</span>
+    </button>
+    <button class="nav" data-page="results">
+      ◉ <span>Evidence Room</span>
+    </button>
+    <button class="nav" data-page="history">
+      ◷ <span>Timeline</span>
+    </button>
+    <button class="nav" data-page="methods">
+      ✦ <span>AI Methods</span>
+    </button>
+  </nav>
+
+  <div class="side-foot">
+    <div class="status-dot"></div>
+    <span>
+      Local workspace online
+      <small>Rule-based intelligence · no ML</small>
+    </span>
+  </div>
+</aside>
+
+<main>
+  <div class="topline">
+    <div>
+      <div class="eyebrow">
+        LAB / <span id="breadcrumb">OVERVIEW</span>
+      </div>
+      <h1 id="page-title">Quality, with a point of view.</h1>
+      <p id="page-sub">
+        A smarter place to test APIs and find the truth
+        in every response.
+      </p>
+    </div>
+
+    <div class="top-actions">
+      <span class="local">● PRIVATE LOCAL STUDIO</span>
+      <button id="top-new" class="btn btn-primary">
+        + New test
+      </button>
+    </div>
+  </div>
+
+  <section id="overview" class="page">
+    <div class="hero">
+      <div>
+        <div class="hero-label">
+          ✦ THE ART OF SHIPPING BETTER
+        </div>
+        <h2>
+          Beautiful interfaces.
+          <br>
+          <i>Brutally honest</i> tests.
+        </h2>
+        <p>
+          Rule-powered checks, meaningful failure explanations,
+          intelligent test generation and real API evidence—all
+          in one remarkably clear workspace.
+        </p>
+        <div class="buttons">
+          <button class="btn btn-light" data-go="studio">
+            Open Test Studio ↗
+          </button>
+          <button class="btn btn-outline" id="demo-action">
+            Try the sample suite
+          </button>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="visual-orbit">
+          <div class="center-icon">✳</div>
+        </div>
+        <div class="visual-tag tag-one">✧ VALIDATED</div>
+        <div class="visual-tag tag-two">◈ CONTRACT WATCH</div>
+        <div class="visual-tag tag-three">◉ RISK SCANNED</div>
+      </div>
+    </div>
+
+    <div class="metrics">
+      <article class="metric">
+        <div>Quality score <span>↗</span></div>
+        <strong id="score">—</strong>
+        <small>Based on configured rules</small>
+      </article>
+      <article class="metric">
+        <div>Test coverage <span>◎</span></div>
+        <strong id="coverage">—</strong>
+        <small>Cases with assertions</small>
+      </article>
+      <article class="metric">
+        <div>Findings <span>◇</span></div>
+        <strong id="findings">—</strong>
+        <small>Actionable discrepancies</small>
+      </article>
+      <article class="metric">
+        <div>Release gate <span>◉</span></div>
+        <strong id="decision">PENDING</strong>
+        <small>Advisory risk decision</small>
+      </article>
+    </div>
+
+    <div class="dashboard-grid">
+      <article class="panel">
+        <div class="panel-head">
+          <div>
+            <span class="eyebrow">QUALITY SIGNAL</span>
+            <h3>Recent executions</h3>
+          </div>
+          <span class="small-tag">LAST 10 RUNS</span>
+        </div>
+        <div class="bars" id="chart"></div>
+      </article>
+
+      <article class="panel">
+        <div class="panel-head">
+          <div>
+            <span class="eyebrow">THE VERDICT</span>
+            <h3>Release outlook</h3>
+          </div>
+        </div>
+
+        <div class="donut" id="donut">
+          <div>
+            <strong id="donut-number">—</strong>
+            <span>QUALITY</span>
+          </div>
+        </div>
+        <p class="verdict" id="verdict">
+          Your first run will light this up.
+        </p>
+      </article>
+    </div>
+
+    <article class="panel">
+      <div class="panel-head">
+        <div>
+          <span class="eyebrow">ACTIONABLE INTELLIGENCE</span>
+          <h3>What needs attention?</h3>
+        </div>
+      </div>
+      <div id="insights" class="placeholder">
+        Nothing to investigate yet. Run the sample suite
+        to see the engine in action.
+      </div>
+    </article>
+  </section>
+
+  <section id="studio" class="page hidden">
+    <div class="panel">
+      <div class="panel-head">
+        <div>
+          <span class="eyebrow">
+            BUILD / PROBE / UNDERSTAND
+          </span>
+          <h3>Test composer</h3>
+          <p>
+            Create real checks, make negative cases,
+            or import API documentation.
+          </p>
+        </div>
+        <div class="buttons">
+          <button class="btn btn-soft" id="sample">
+            ↻ Sample suite
+          </button>
+          <button class="btn btn-primary" id="add">
+            + Add case
+          </button>
+        </div>
+      </div>
+
+      <div class="studio-toolbar">
+        <div class="generator">
+          <b>✦ Rule-based case generator</b>
+          <p>
+            Generate positive, negative, boundary
+            and equivalence cases for demo APIs.
+          </p>
+          <div class="toolbar-inputs">
+            <select id="gen-method">
+              <option>GET</option>
+              <option>POST</option>
+            </select>
+            <input
+              id="gen-endpoint"
+              value="/demo/users"
+              aria-label="Generation endpoint"
+            >
+            <button class="btn btn-dark" id="generate">
+              Generate cases ↗
+            </button>
+          </div>
+        </div>
+
+        <div class="importer">
+          <b>◈ OpenAPI import</b>
+          <p>
+            Paste OpenAPI 3 JSON to draft expected-status
+            and response-schema assertions.
+          </p>
+          <button class="btn btn-soft" id="openapi-toggle">
+            Paste OpenAPI JSON
+          </button>
+        </div>
+      </div>
+
+      <div id="openapi-box" class="hidden">
+        <textarea
+          id="openapi-json"
+          class="big-text"
+          placeholder='{"openapi":"3.0.3","paths":{...}}'
+        ></textarea>
+        <button id="openapi-import" class="btn btn-dark">
+          Import operation drafts
+        </button>
+      </div>
+
+      <div class="alert">
+        External HTTP methods can modify real data.
+        Enable them only for an API you own or are authorized
+        to test. External writes are
+        <b>disabled by default</b>.
+        Public HTTPS GET works without enabling writes.
+      </div>
+
+      <div class="case-toolbar">
+        <b id="case-count">0 TEST CASES</b>
+        <label class="toggle">
+          <input type="checkbox" id="allow-writes">
+          Allow authorized external writes
+        </label>
+        <button id="clear" class="btn btn-ghost">Clear</button>
+        <button id="run" class="btn btn-primary">
+          ▶ Run suite
+        </button>
+      </div>
+
+      <div id="cases"></div>
+    </div>
+  </section>
+
+  <section id="results" class="page hidden">
+    <div class="panel">
+      <div class="panel-head">
+        <div>
+          <span class="eyebrow">TEST EVIDENCE</span>
+          <h3>Execution results</h3>
+          <p>
+            See the whole picture: actual data, expectations,
+            gaps and suggested fixes.
+          </p>
+        </div>
+
+        <div class="buttons">
+          <button id="download" class="btn btn-soft">
+            ↓ JSON report
+          </button>
+          <button class="btn btn-primary" data-go="studio">
+            ↻ Edit & rerun
+          </button>
+        </div>
+      </div>
+
+      <div id="report-summary" class="placeholder">
+        Run a suite to see your evidence report.
+      </div>
+
+      <div class="filter-tabs">
+        <button class="filter active" data-filter="all">
+          All tests
+        </button>
+        <button class="filter" data-filter="problems">
+          Problems
+        </button>
+        <button class="filter" data-filter="ready">
+          Ready
+        </button>
+      </div>
+
+      <div id="result-list"></div>
+    </div>
+  </section>
+
+  <section id="history" class="page hidden">
+    <div class="panel">
+      <div class="panel-head">
+        <div>
+          <span class="eyebrow">TIME MACHINE</span>
+          <h3>Every run leaves a trace</h3>
+        </div>
+        <button id="refresh" class="btn btn-soft">
+          ↻ Refresh
+        </button>
+      </div>
+
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>RUN</th>
+              <th>UTC DATE</th>
+              <th>SCORE</th>
+              <th>COVERAGE</th>
+              <th>DECISION</th>
+            </tr>
+          </thead>
+          <tbody id="history-rows"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="methods" class="page hidden">
+    <div class="panel">
+      <span class="eyebrow">UNDER THE HOOD</span>
+      <h3>Not a black box. A glass box.</h3>
+      <p>
+        Classical AI reasoning, heuristics, boundary analysis
+        and explicit assertions. No trained model
+        and no remote AI key.
+      </p>
+
+      <div class="method-grid">
+        <div>
+          <span>01</span>
+          <h4>Rule-based expert system</h4>
+          <p>
+            Deterministic assertions evaluate status codes,
+            field existence, types, numeric ranges
+            and JSON schemas.
+          </p>
+        </div>
+
+        <div>
+          <span>02</span>
+          <h4>Boundary value analysis</h4>
+          <p>
+            Generates an invalid empty-name input
+            and an expected 400 response for the demo
+            POST endpoint.
+          </p>
+        </div>
+
+        <div>
+          <span>03</span>
+          <h4>Equivalence partitioning</h4>
+          <p>
+            Proposes representative valid and invalid
+            input classes to explore business constraints.
+          </p>
+        </div>
+
+        <div>
+          <span>04</span>
+          <h4>Contract drift detection</h4>
+          <p>
+            Tracks required fields, removed properties,
+            type changes and response structures
+            by method and URL.
+          </p>
+        </div>
+
+        <div>
+          <span>05</span>
+          <h4>OpenAPI-powered expectations</h4>
+          <p>
+            Builds test drafts from documented response
+            codes and inline JSON schema definitions.
+          </p>
+        </div>
+
+        <div>
+          <span>06</span>
+          <h4>Explainable release decisions</h4>
+          <p>
+            Separates percentage of cases covered
+            by assertions from risk-weighted quality
+            and the final gate.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    RULEGUARD ATELIER <b>✳</b>
+    CLASSICAL AI, MEANINGFUL TESTING
+    <b>✳</b> LOCAL EDUCATIONAL BUILD
+  </footer>
+</main>
+</div>
+
+<div id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
